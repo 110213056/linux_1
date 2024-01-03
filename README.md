@@ -1,4 +1,4 @@
-# FINAL-PROJECT-README-TEMPLATE
+# FINAL-PROJECT-README
 
 ## Concept Development
 <!-- Why does your team want to build this idea/project?  -->
