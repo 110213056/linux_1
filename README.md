@@ -35,6 +35,92 @@ graph TD;
   D -->|安裝完成| E[產生伺服器SSL/使用者帳戶];
   E -->|設置完成| F[在欲連線裝置上下載VPN客戶端];
 ```
+### 實作過程
+先在Pi OS lite開啟SSH功能
+
+![image](https://github.com/110213056/linux_1/assets/148735788/02571e8f-7061-4269-a29a-32fbb662c687)
+
+取得樹梅派的內網IP
+```
+hostname -I
+```
+![image](https://github.com/110213056/linux_1/assets/148735788/c77b9cfd-85d0-4312-94e5-b9c58ad8f0be)
+
+SSH到樹梅派
+```
+ssh <用戶名>@<內網IP>
+```
+
+路由器設定固定IP(帳號密碼可Google路由器機型取得)
+
+![image](https://github.com/110213056/linux_1/assets/148735788/b5060b49-9375-4c04-a2cd-0b7e1e8ca186)
+
+瀏覽器的gateway IP通常是192.168.1.1 or 192.168.1.0
+
+![image](https://github.com/110213056/linux_1/assets/148735788/0d748e19-6ba5-4a4b-a7c8-1f408602ab9c)
+
+到LAN setting裡設定static DCHP
+
+![未命名](https://github.com/110213056/linux_1/assets/148735788/392c8820-9463-4bd2-ad15-5971223f5841)
+
+輸入樹梅派的MAC和想要的內網IP
+
+![image](https://github.com/110213056/linux_1/assets/148735788/021e0d2c-c029-4a7f-8726-f13cb9baf932)
+
+重啟樹梅派，刷新IP
+![image](https://github.com/110213056/linux_1/assets/148735788/2e0dd634-2a86-4368-99b3-a5bd72bf6d7d)
+
+接著我們想做
+![image](https://github.com/110213056/linux_1/assets/148735788/6619f931-b4e5-44e9-9169-4e987ca2b54e)
+
+到NAT設定Port forwarding
+![image](https://github.com/110213056/linux_1/assets/148735788/1625c3ac-993f-444c-a8a6-ecd0135a4f4f)
+
+
+指定一個port 轉到樹梅派的內網IP上
+![image](https://github.com/110213056/linux_1/assets/148735788/855b9307-f677-4c67-a127-50fd4a30ccec)
+
+設定外網固定IP(固定IP已向網路供應商申請)
+![image](https://github.com/110213056/linux_1/assets/148735788/87b6833c-80e3-4b39-a6be-0aecbae97127)
+
+到WAN setting設定PPPoE的選項
+![image](https://github.com/110213056/linux_1/assets/148735788/9ed91ac8-8cff-48df-949d-70e634b264b3)
+
+接著上網查看自己外網IP是否正確即可
+
+到NoIP申請一個域名
+![image](https://github.com/110213056/linux_1/assets/148735788/3b9e82f9-7b79-4d7b-abc6-26ebbe5ca3bc)
+
+用Ping檢查
+![image](https://github.com/110213056/linux_1/assets/148735788/c3a50def-edb2-4e42-b5c6-085f01ed1e4a)
+
+在樹梅派裝NoIP給的客戶端，定時更新DDNS
+```
+mkdir /home/<用戶名>/noip
+cd /home/<用戶名>/noip
+wget https://www.noip.com/client/linux/noip-duc-linux.tar.gz
+```
+
+下載好記得解壓縮，並且登入剛創的noip帳號
+```
+tar vzxf noip-duc-linux.tar.gz
+cd /noip-2.1.9-1
+sudo make
+sudo make install
+```
+安裝PiVPN，按照以下設定
+![image](https://github.com/110213056/linux_1/assets/148735788/7e2f6805-0c6f-46e6-8bf4-d7aba44c59c6)
+![image](https://github.com/110213056/linux_1/assets/148735788/0924327e-7912-46f0-8620-12d10c3c9719)
+![image](https://github.com/110213056/linux_1/assets/148735788/0e32747c-edd8-45fc-8478-fdc26d58fd98)
+這邊選擇剛剛設定要用的port
+![image](https://github.com/110213056/linux_1/assets/148735788/b81160b4-a543-459a-bae6-5184a0c685bf)
+![image](https://github.com/110213056/linux_1/assets/148735788/b923711b-1ccb-4e02-abae-e171502b2000)
+![image](https://github.com/110213056/linux_1/assets/148735788/dcbe9068-63e9-470a-8bef-4fbd211a3d2e)
+開啟自動安全性更新
+![image](https://github.com/110213056/linux_1/assets/148735788/2a5d868c-1f4b-4ff2-ac0c-885f2423af83)
+
+輸入 pivpn -a 增加一個新的使用者，會生成一個使用者設定檔，在/home/<用戶名>/configs
+![image](https://github.com/110213056/linux_1/assets/148735788/3506ad58-6825-467d-aea3-0d1b95ca9733)
 
 
 
@@ -54,6 +140,8 @@ graph TD;
 **原理：**
 LAN使用內網IP，WAN使用外網IP
 
+### Port forwarding
+
 ## Installation
 <!-- How do the user install with your project? -->
 PiVPN
@@ -62,6 +150,7 @@ curl -L https://install.pivpn.io | bash
 ```
 
 固定IP - 跟中華電信申請
+
 ![image](https://github.com/110213056/linux_1/assets/148735788/0b1c88cc-574b-432a-9840-601361b44f62)
 
 註冊NoIP
@@ -76,6 +165,18 @@ https://www.wireguard.com/install/
 
 ## Usage
 <!-- How to use your project -->
+用scp下載在樹梅派上的檔案
+```
+scp <用戶名>@<內網IP>:/home/<用戶名>/configs/<VPN用戶名>.conf <VPN用戶名>.conf
+```
+![image](https://github.com/110213056/linux_1/assets/148735788/99055d77-28d3-42ca-bb0f-996e590d9956)
+
+在PC端使用(下載wireguard的VPN客戶端)
+![image](https://github.com/110213056/linux_1/assets/148735788/9f5df1af-2ef8-4789-b33e-0d65c04ab500)
+
+載安著手機端使用(下載 Wireguard VPN客戶端 > 匯入檔案)
+![image](https://github.com/110213056/linux_1/assets/148735788/97c1947c-0c5e-4a69-ba35-e020ed100828)
+
 使用VPN前後在SSH上的差別
 
 ![image](https://github.com/110213056/linux_1/assets/148735788/4cce8bc1-a4d7-4757-86f5-a2dcb16b589a)
@@ -85,8 +186,8 @@ https://www.wireguard.com/install/
 
 |  實做  | 查資料 | github |  PPT  |  報告 | 
 | ----- | ------ | ------ | ----- | ----- |
-| 廖承偉 | 吉凱聖 | 廖承偉 | 王彥仁 | 王彥仁 |
-| 吉凱聖 | 王新友 | 吳哲岳 | 王新友 |   -   | 
+| 吉凱聖 | 吉凱聖 | 廖承偉 | 王彥仁 | 王彥仁 |
+| 廖承偉 | 王新友 | 吳哲岳 | 王新友 |   -   | 
 | 吳哲岳 | 廖承偉 | 王新友 | 吉凱聖 |   -   |
 | 王彥仁 | 吳哲岳 |   -   |   -   |   -   | 
 
