@@ -1,4 +1,4 @@
-![image](https://github.com/110213056/linux_1/assets/148735788/3dadbb32-cf55-43af-817d-f2147f22f029)# FINAL-PROJECT-README-TEMPLATE
+# FINAL-PROJECT-README-TEMPLATE
 
 ## Concept Development
 <!-- Why does your team want to build this idea/project?  -->
