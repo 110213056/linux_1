@@ -143,6 +143,8 @@ sudo make install
 LAN使用內網IP，WAN使用外網IP
 
 ### Port forwarding
+**原理：**
+將從一個網路中的特定port接收到的數據流量轉發到另一個網路中的指定port
 
 ## Installation
 <!-- How do the user install with your project? -->
