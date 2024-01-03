@@ -28,6 +28,9 @@ curl -L https://install.pivpn.io | bash
 
 註冊NoIP
 
+![image](https://github.com/110213056/linux_1/assets/148735788/b9610e9e-3da4-4111-8df4-d64eb71527eb)
+
+
 下載wireguard(或手機下載)
 https://www.wireguard.com/install/
 
