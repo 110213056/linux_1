@@ -1,11 +1,33 @@
-# LSA Final Project README Template
+# FINAL-PROJECT-README-TEMPLATE
 
-## Prerequisites
+## Concept Development
 
-There are a few prerequisites which must be installed on your machine before you will be able to commit.
+<!-- Why does your team want to build this idea/project?  -->
 
-The following command will install all required and optional dependencies on Ubuntu Linux 18.04 or later:
+## Implementation Resources
 
-```sh
-$ sudo apt install git aspell colordiff
-```
+<!-- e.g., How many Raspberry Pi? How much you spent on these resources? -->
+
+## Existing Library/Software
+
+<!-- Which libraries do you use while you implement the project -->
+
+## Implementation Process
+
+<!-- What kind of problems you encounter, and how did you resolve the issue? -->
+
+## Knowledge from Lecture
+
+<!-- What kind of knowledge did you use on this project? -->
+
+## Installation
+
+<!-- How do the user install with your project? -->
+
+## Usage
+
+<!-- How to use your project -->
+
+## Job Assignment
+
+## References
