@@ -112,10 +112,12 @@ sudo make install
 ![image](https://github.com/110213056/linux_1/assets/148735788/7e2f6805-0c6f-46e6-8bf4-d7aba44c59c6)
 ![image](https://github.com/110213056/linux_1/assets/148735788/0924327e-7912-46f0-8620-12d10c3c9719)
 ![image](https://github.com/110213056/linux_1/assets/148735788/0e32747c-edd8-45fc-8478-fdc26d58fd98)
+
 這邊選擇剛剛設定要用的port
 ![image](https://github.com/110213056/linux_1/assets/148735788/b81160b4-a543-459a-bae6-5184a0c685bf)
 ![image](https://github.com/110213056/linux_1/assets/148735788/b923711b-1ccb-4e02-abae-e171502b2000)
 ![image](https://github.com/110213056/linux_1/assets/148735788/dcbe9068-63e9-470a-8bef-4fbd211a3d2e)
+
 開啟自動安全性更新
 ![image](https://github.com/110213056/linux_1/assets/148735788/2a5d868c-1f4b-4ff2-ac0c-885f2423af83)
 
@@ -169,12 +171,15 @@ https://www.wireguard.com/install/
 ```
 scp <用戶名>@<內網IP>:/home/<用戶名>/configs/<VPN用戶名>.conf <VPN用戶名>.conf
 ```
+
 ![image](https://github.com/110213056/linux_1/assets/148735788/99055d77-28d3-42ca-bb0f-996e590d9956)
 
 在PC端使用(下載wireguard的VPN客戶端)
+
 ![image](https://github.com/110213056/linux_1/assets/148735788/9f5df1af-2ef8-4789-b33e-0d65c04ab500)
 
 載安著手機端使用(下載 Wireguard VPN客戶端 > 匯入檔案)
+
 ![image](https://github.com/110213056/linux_1/assets/148735788/97c1947c-0c5e-4a69-ba35-e020ed100828)
 
 使用VPN前後在SSH上的差別
