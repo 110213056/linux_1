@@ -5,7 +5,6 @@
 <!-- Why does your team want to build this idea/project?  -->
 
 ## Implementation Resources
-
 <!-- e.g., How many Raspberry Pi? How much you spent on these resources? -->
 
 ## Existing Library/Software
