@@ -187,6 +187,8 @@ scp <用戶名>@<內網IP>:/home/<用戶名>/configs/<VPN用戶名>.conf <VPN用
 使用VPN前後在SSH上的差別
 
 ![image](https://github.com/110213056/linux_1/assets/148735788/4cce8bc1-a4d7-4757-86f5-a2dcb16b589a)
+## 未來展望
+在烏俄戰爭之後，因為俄國的網路管控原因，導致俄國人必須要用vpn才連線到外國的網站，中國也是如此，為了讓小蝦迷戰勝大鯨魚，我們希望未來能將vpn作為一個反滲透武器來使用。
 
 
 ## Job Assignment
