@@ -199,3 +199,6 @@ scp <用戶名>@<內網IP>:/home/<用戶名>/configs/<VPN用戶名>.conf <VPN用
 | 王彥仁 | 吳哲岳 |   -   |   -   |   -   | 
 
 ## References
+https://github.com/pivpn/pivpn
+## 簡報連結
+https://docs.google.com/presentation/d/1KQSmEWhO1FUNpS2-b8gzUJlNwKOKJmb0z7OTwvtu_cU/edit?usp=sharing
